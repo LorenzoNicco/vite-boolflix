@@ -17,14 +17,18 @@ export default {
   },
   methods: {
     searchMovie() {
-        axios
+      axios
       .get("https://api.themoviedb.org/3/search/movie?api_key=44bbbe46a74e4cb360533140b122b63a", {
         params: {
           query: this.store.movieTitle
         }
       })
       .then ((response) => {
-        console.log(response);
+        this.store.movies = response.data
+        console.log("movies array", this.store.movies)
+        console.log("response",response);
+
+        this.store.loaded = true;
       });
     }
   },
