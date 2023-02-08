@@ -14,7 +14,7 @@ export default {
 <template>
     <form action="" @submit.prevent="onSubmit">
         <input type="text" placeholder="Digita il titolo di un film"
-         v-model="store.movieTitle"
+         v-model="store.researchedTitle"
         >
 
         <button type="submit" @click="$emit('search')">Search</button>
