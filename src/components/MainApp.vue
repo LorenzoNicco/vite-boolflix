@@ -5,7 +5,7 @@ export default {
     name: "MainApp",
     data() {
         return {
-        store
+            store
         }
     }
 }
