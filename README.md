@@ -18,7 +18,7 @@ Milestone 0: progetto struttura app
             -chiamata API
             -ricezione $emit
         - HeaderApp.vue
-            -nav
+            -form
                 -input text con v-model
                 -button con evento $emit
         - MainApp.vue
