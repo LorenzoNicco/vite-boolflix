@@ -1,19 +1,26 @@
 <script>
+import { store } from "./store.js";
+
+import HeaderApp from "./components/HeaderApp.vue";
+import MainApp from "./components/MainApp.vue";
+
 export default {
   data() {
     return {
-      count: 0
+      store
     }
+  },
+  components: {
+    HeaderApp,
+    MainApp
   }
 }
 </script>
 
 <template>
-  <button @click="count++">Count is: {{ count }}</button>
+
 </template>
 
-<style scoped>
-button {
-  font-weight: bold;
-}
+<style>
+
 </style>
