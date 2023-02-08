@@ -13,6 +13,7 @@ export default {
 
 <template>
     <!-- inizio lista film ------------------------------------------------------------------------------------->
+    <h2>Movies</h2>
     <div v-if="store.movies.results == 0">
         <ul v-if="store.loaded == true">
             <li>Titolo: -</li>
@@ -37,6 +38,7 @@ export default {
     <!-- fine lista film ------------------------------------------------------------------------------------->
 
     <!-- inizio lista serie ------------------------------------------------------------------------------------->
+    <h2>TV Shows</h2>
     <div v-if="store.tvSeries.results == 0">
         <ul v-if="store.loaded == true">
             <li>Titolo: -</li>
