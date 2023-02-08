@@ -28,7 +28,7 @@ export default {
         console.log("movies array", this.store.movies)
         console.log("response movies",response);
         
-        // selezione linguaggio
+        // selezione linguaggio (in alternativa: v-if in MainApp)
         if (store.movies.results[0].original_language == 'en') {
           this.store.movieLanguage = "fi fi-gb";
         }
@@ -55,7 +55,7 @@ export default {
         console.log("tvshow array", this.store.tvSeries)
         console.log("response tv",response);
 
-        // selezione linguaggio
+        // selezione linguaggio (in alternativa: v-if in MainApp)
         if (store.tvSeries.results[0].original_language == 'en') {
           this.store.tvLanguage = "fi fi-gb";
         }
