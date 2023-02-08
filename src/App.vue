@@ -27,7 +27,19 @@ export default {
         this.store.movies = response.data
         console.log("movies array", this.store.movies)
         console.log("response movies",response);
+        
+        // selezione linguaggio
+        if (store.movies.results[0].original_language == 'en') {
+          this.store.movieLanguage = "fi fi-gb";
+        }
+        else if (store.movies.results[0].original_language == "ja") {
+          this.store.movieLanguage = "fi fi-jp";
+        }
+        else {
+          this.store.movieLanguage = "fi fi-" + store.movies.results[0].original_language;
+        }
 
+        // store loader
         this.store.loaded = true;
       });
     },
@@ -43,6 +55,18 @@ export default {
         console.log("tvshow array", this.store.tvSeries)
         console.log("response tv",response);
 
+        // selezione linguaggio
+        if (store.tvSeries.results[0].original_language == 'en') {
+          this.store.tvLanguage = "fi fi-gb";
+        }
+        else if (store.tvSeries.results[0].original_language == "ja") {
+          this.store.tvLanguage = "fi fi-jp";
+        }
+        else {
+          this.store.tvLanguage = "fi fi-" + store.tvSeries.results[0].original_language;
+        }
+
+        // store loader
         this.store.loaded = true;
       });
     }
