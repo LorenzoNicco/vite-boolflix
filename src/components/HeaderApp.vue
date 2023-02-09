@@ -12,15 +12,38 @@ export default {
 </script>
 
 <template>
-    <form action="" @submit.prevent="onSubmit">
-        <input type="text" placeholder="Digita il titolo di un film"
-         v-model="store.researchedTitle"
-        >
+    <header>
+        <h1>BOOLFLIX</h1>
 
-        <button type="submit" @click="$emit('search')">Search</button>
-    </form>
+        <form action="" @submit.prevent="onSubmit">
+            <input type="text" placeholder="Digita un titolo"
+            v-model="store.researchedTitle"
+            @keyup.enter="$emit('search')"
+            >
+        </form>
+    </header>
 </template>
 
 <style  lang="scss" scoped>
+    header {
+        height: 10vh;
+        width: 100%;
+        background-color: black;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h1 {
+            color: red;
+        }
+
+        input {
+            height: 2rem;
+            border-radius: 5px;
+            border: none;
+            padding: 5px;
+        }
+    }
 
 </style>
