@@ -6,6 +6,16 @@ h2 {
     margin: 2rem 0;
 }
 
+.card-no {
+    height: $cardHeigth;
+    width: $cardWidth;
+    @include info-structure;
+    @include flex-center;
+    flex-direction: column;
+    font-size: larger;
+    font-weight: bold;
+}
+
 .card-container {
     display: flex;
     flex-wrap: nowrap;
@@ -25,10 +35,7 @@ h2 {
         position: relative;
 
         .card-info {
-        padding: 4rem 0.5rem;
-        background-color: black;
-        color: white;
-        border: 5px solid white;
+        @include info-structure;
         overflow-y: auto;
 
             .star-icon {

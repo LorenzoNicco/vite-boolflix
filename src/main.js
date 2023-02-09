@@ -9,7 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
 import { 
-    faStar
+    faStar,
+    faFaceFrown
 } from '@fortawesome/free-solid-svg-icons';
 
 import { 
@@ -19,7 +20,8 @@ import {
 /* add icons to the library */
 library.add(
     faStar,
-    faStarRegular
+    faStarRegular,
+    faFaceFrown
 )
 
 createApp(App)

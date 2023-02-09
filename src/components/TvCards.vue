@@ -16,14 +16,10 @@ export default {
             <h2>TV Shows</h2>
 
             <!-- carta placeholder -------------------------------------------------------------------->
-            <div v-if="store.tvSeries == 0"  class="card-no card-commons">
-                <ul>
-                    <li>Titolo: -</li>
-                    <li>Titolo originale: -</li>
-                    <li>Lingua:  -</li>
-                    <li>Voto: -</li>
-                    <li>locandina: -</li>
-                </ul>
+            <div v-if="store.tvSeries == 0"  class="card-no">
+                <font-awesome-icon class="sad-face-icon" icon="fa-solid fa-face-frown" />
+                
+                <p>Titolo non presente</p>
             </div>
             <!-- carta principale -------------------------------------------------------------------->
             <div v-else class="card-container">
@@ -31,7 +27,7 @@ export default {
                     <div class="card-commons card-info">
                         <ul>
                             <li><strong>Titolo:</strong> {{ show.name }}</li>
-                            <li><strong>Titolo originale:</strong> {{ show.original_name }}</li>
+                            <li v-show="show.original_name != show.name"><strong>Titolo originale:</strong> {{ show.original_name }}</li>
                             <li><strong>Lingua:</strong>  <span :class="'fi fi-'+ store.languageControl(show)"></span></li>
 
                             <!-- sezione voto -->
