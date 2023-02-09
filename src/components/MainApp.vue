@@ -61,9 +61,6 @@ export default {
         </ul>
     </div>
     <!-- fine lista serie ------------------------------------------------------------------------------------->
-
-    <!-- collegamento cdn per bandiere -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
 </template>
 
 <style scoped>

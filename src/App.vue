@@ -18,9 +18,11 @@ export default {
   methods: {
     searchMovie() {
       axios
-      .get("https://api.themoviedb.org/3/search/movie?api_key=44bbbe46a74e4cb360533140b122b63a", {
+      .get("https://api.themoviedb.org/3/search/movie", {
         params: {
-          query: this.store.researchedTitle
+          api_key: "44bbbe46a74e4cb360533140b122b63a",
+          query: this.store.researchedTitle,
+          language: "it-IT"
         }
       })
       .then ((response) => {
@@ -38,6 +40,7 @@ export default {
         else {
           this.store.movieLanguage = "fi fi-" + store.movies.results[0].original_language;
         }
+        // this.languageSelector(this.store.movies.results[0].original_language, this.store.movieLanguage);
 
         // store loader
         this.store.loaded = true;
@@ -45,9 +48,11 @@ export default {
     },
     searchTvSeries() {
       axios
-      .get("https://api.themoviedb.org/3/search/tv?api_key=44bbbe46a74e4cb360533140b122b63a", {
+      .get("https://api.themoviedb.org/3/search/tv?", {
         params: {
-          query: this.store.researchedTitle
+          api_key: "44bbbe46a74e4cb360533140b122b63a",
+          query: this.store.researchedTitle,
+          language: "it-IT"
         }
       })
       .then ((response) => {
@@ -57,19 +62,31 @@ export default {
 
         // selezione linguaggio (in alternativa: v-if in MainApp)
         if (store.tvSeries.results[0].original_language == 'en') {
-          this.store.tvLanguage = "fi fi-gb";
+          this.store.tvLanguage = "gb";
         }
         else if (store.tvSeries.results[0].original_language == "ja") {
-          this.store.tvLanguage = "fi fi-jp";
+          this.store.tvLanguage = "jp";
         }
         else {
-          this.store.tvLanguage = "fi fi-" + store.tvSeries.results[0].original_language;
+          this.store.tvLanguage = store.tvSeries.results[0].original_language;
         }
 
+        // this.languageSelector(this.store.tvSeries.results[0].original_language, this.store.tvLanguage);
         // store loader
         this.store.loaded = true;
       });
-    }
+    },
+    // languageSelector(media, language) {
+    //   if (media == 'en') {
+    //     language = "gb";
+    //   }
+    //   else if (media == "ja") {
+    //     language = "jp";
+    //   }
+    //   else {
+    //     language = media;
+    //   }
+    // }
   }
 }
 </script>
