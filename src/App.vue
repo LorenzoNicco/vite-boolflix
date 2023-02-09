@@ -29,9 +29,6 @@ export default {
         // selezione film
         if (media == "movie") {
           this.store.movies = response.data.results
-          for (let i = 0; i < this.store.movies.length; i++) {
-            this.store.movies[i].active = false;
-          }
 
           console.log("movies array", this.store.movies)
           console.log("response movies",response);
@@ -39,10 +36,7 @@ export default {
         // selezione serie tv
         else {
           this.store.tvSeries = response.data.results
-          for (let i = 0; i < this.store.tvSeries.length; i++) {
-            this.store.tvSeries[i].active = false;
-          }
-          
+
           console.log("tvshow array", this.store.tvSeries)
           console.log("response tv",response);
         }
