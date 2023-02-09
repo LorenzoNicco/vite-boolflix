@@ -14,7 +14,7 @@ export default {
 <template>
     <!-- inizio lista film ------------------------------------------------------------------------------------->
     <h2>Movies</h2>
-    <div v-if="store.movies.results == 0">
+    <div v-if="store.movies == 0">
         <ul v-if="store.loaded == true">
             <li>Titolo: -</li>
             <li>Titolo originale: -</li>
@@ -25,21 +25,21 @@ export default {
     </div>
     <div v-else>
         <ul v-if="store.loaded == true">
-            <li>Titolo: {{ store.movies.results[0].title }}</li>
-            <li>Titolo originale: {{ store.movies.results[0].original_title }}</li>
+            <li>Titolo: {{ store.movies[0].title }}</li>
+            <li>Titolo originale: {{ store.movies[0].original_title }}</li>
             <li>Lingua:  <span :class="'fi fi-'+ store.movieLanguage"></span></li>
-            <li>Voto: {{ store.movies.results[0].vote_average }}</li>
+            <li>Voto: {{ store.movies[0].vote_average }}</li>
 
             <!-- sezione locandina -->
-            <li v-if="store.movies.results[0].poster_path == null">Locandina: Non presente</li>
-            <li v-else>Locandina: <img :src="'https://image.tmdb.org/t/p/w92'+ store.movies.results[0].poster_path" alt=""></li>
+            <li v-if="store.movies[0].poster_path == null">Locandina: Non presente</li>
+            <li v-else>Locandina: <img :src="'https://image.tmdb.org/t/p/w92'+ store.movies[0].poster_path" alt=""></li>
         </ul>
     </div>
     <!-- fine lista film ------------------------------------------------------------------------------------->
 
     <!-- inizio lista serie ------------------------------------------------------------------------------------->
     <h2>TV Shows</h2>
-    <div v-if="store.tvSeries.results == 0">
+    <div v-if="store.tvSeries == 0">
         <ul v-if="store.loaded == true">
             <li>Titolo: -</li>
             <li>Titolo originale: -</li>
@@ -50,14 +50,14 @@ export default {
     </div>
     <div v-else>
         <ul v-if="store.loaded == true">
-            <li>Titolo: {{ store.tvSeries.results[0].name }}</li>
-            <li>Titolo originale: {{ store.tvSeries.results[0].original_name }}</li>
+            <li>Titolo: {{ store.tvSeries[0].name }}</li>
+            <li>Titolo originale: {{ store.tvSeries[0].original_name }}</li>
             <li>Lingua:  <span :class="'fi fi-'+ store.tvLanguage"></span></li>
-            <li>Voto: {{ store.tvSeries.results[0].vote_average }}</li>
+            <li>Voto: {{ store.tvSeries[0].vote_average }}</li>
 
             <!-- sezione locandina -->
-            <li v-if="store.tvSeries.results[0].poster_path == null">Locandina: Non presente</li>
-            <li v-else>Locandina: <img :src="'https://image.tmdb.org/t/p/w92'+ store.tvSeries.results[0].poster_path" alt=""></li>
+            <li v-if="store.tvSeries[0].poster_path == null">Locandina: Non presente</li>
+            <li v-else>Locandina: <img :src="'https://image.tmdb.org/t/p/w92'+ store.tvSeries[0].poster_path" alt=""></li>
         </ul>
     </div>
     <!-- fine lista serie ------------------------------------------------------------------------------------->
