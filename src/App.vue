@@ -31,34 +31,12 @@ export default {
           this.store.movies = response.data.results
           console.log("movies array", this.store.movies)
           console.log("response movies",response);
-          
-          // selezione linguaggio (in alternativa: v-if in MainApp)
-          if (store.movies[0].original_language == 'en') {
-            this.store.movieLanguage = "fi fi-gb";
-          }
-          else if (store.movies[0].original_language == "ja") {
-            this.store.movieLanguage = "fi fi-jp";
-          }
-          else {
-            this.store.movieLanguage = "fi fi-" + store.movies[0].original_language;
-          }
         }
         // selezione serie tv
         else {
           this.store.tvSeries = response.data.results
           console.log("tvshow array", this.store.tvSeries)
           console.log("response tv",response);
-
-          // selezione linguaggio (in alternativa: v-if in MainApp)
-          if (store.tvSeries[0].original_language == 'en') {
-            this.store.tvLanguage = "gb";
-          }
-          else if (store.tvSeries[0].original_language == "ja") {
-            this.store.tvLanguage = "jp";
-          }
-          else {
-            this.store.tvLanguage = store.tvSeries[0].original_language;
-          }
         }
 
         // store loader

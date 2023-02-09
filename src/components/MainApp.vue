@@ -8,58 +8,79 @@ export default {
             store
         }
     },
+    methods: {
+        languageControl (media) {
+            let language;
+
+            if (media.original_language == 'en') {
+            language = "gb";
+            }
+            else if (media.original_language == "ja") {
+                language = "jp";
+            }
+            else {
+                language = media.original_language;
+            }
+
+            return language
+        }
+    }
 }
 </script>
 
 <template>
     <!-- inizio lista film ------------------------------------------------------------------------------------->
     <h2>Movies</h2>
-    <div v-if="store.movies == 0">
-        <ul v-if="store.loaded == true">
-            <li>Titolo: -</li>
-            <li>Titolo originale: -</li>
-            <li>Lingua:  -</li>
-            <li>Voto: -</li>
-            <li>locandina: -</li>
-        </ul>
-    </div>
-    <div v-else>
-        <ul v-if="store.loaded == true">
-            <li>Titolo: {{ store.movies[0].title }}</li>
-            <li>Titolo originale: {{ store.movies[0].original_title }}</li>
-            <li>Lingua:  <span :class="'fi fi-'+ store.movieLanguage"></span></li>
-            <li>Voto: {{ store.movies[0].vote_average }}</li>
+    <section v-if="store.loaded == true">
+        <div v-if="store.movies == 0">
+            <ul>
+                <li>Titolo: -</li>
+                <li>Titolo originale: -</li>
+                <li>Lingua:  -</li>
+                <li>Voto: -</li>
+                <li>locandina: -</li>
+            </ul>
+        </div>
+        <div v-else>
+            <ul v-for="movie in store.movies">
+                <li>Titolo: {{ movie.title }}</li>
+                <li>Titolo originale: {{ movie.original_title }}</li>
+                <li>Lingua:  <span :class="'fi fi-'+ languageControl(movie)"></span></li>
+                <li>Voto: {{ movie.vote_average }}</li>
 
-            <!-- sezione locandina -->
-            <li v-if="store.movies[0].poster_path == null">Locandina: Non presente</li>
-            <li v-else>Locandina: <img :src="'https://image.tmdb.org/t/p/w92'+ store.movies[0].poster_path" alt=""></li>
-        </ul>
-    </div>
+                <!-- sezione locandina -->
+                <li v-if="movie.poster_path == null">Locandina: Non presente</li>
+                <li v-else>Locandina: <img :src="'https://image.tmdb.org/t/p/w92'+ movie.poster_path" alt=""></li>
+            </ul>
+        </div>
+    </section>
     <!-- fine lista film ------------------------------------------------------------------------------------->
 
     <!-- inizio lista serie ------------------------------------------------------------------------------------->
     <h2>TV Shows</h2>
-    <div v-if="store.tvSeries == 0">
-        <ul v-if="store.loaded == true">
-            <li>Titolo: -</li>
-            <li>Titolo originale: -</li>
-            <li>Lingua:  -</li>
-            <li>Voto: -</li>
-            <li>Locandina: -</li>
-        </ul>
-    </div>
-    <div v-else>
-        <ul v-if="store.loaded == true">
-            <li>Titolo: {{ store.tvSeries[0].name }}</li>
-            <li>Titolo originale: {{ store.tvSeries[0].original_name }}</li>
-            <li>Lingua:  <span :class="'fi fi-'+ store.tvLanguage"></span></li>
-            <li>Voto: {{ store.tvSeries[0].vote_average }}</li>
+    <section v-if="store.loaded == true">
+        <div v-if="store.tvSeries == 0">
+            <ul>
+                <li>Titolo: -</li>
+                <li>Titolo originale: -</li>
+                <li>Lingua:  -</li>
+                <li>Voto: -</li>
+                <li>Locandina: -</li>
+            </ul>
+        </div>
+        <div v-else>
+            <ul v-for="show in store.tvSeries">
+                <li>Titolo: {{ show.name }}</li>
+                <li>Titolo originale: {{ show.original_name }}</li>
+                <li>Lingua:  <span :class="'fi fi-'+ languageControl(show)"></span></li>
+                <li>Voto: {{ show.vote_average }}</li>
 
-            <!-- sezione locandina -->
-            <li v-if="store.tvSeries[0].poster_path == null">Locandina: Non presente</li>
-            <li v-else>Locandina: <img :src="'https://image.tmdb.org/t/p/w92'+ store.tvSeries[0].poster_path" alt=""></li>
-        </ul>
-    </div>
+                <!-- sezione locandina -->
+                <li v-if="show.poster_path == null">Locandina: Non presente</li>
+                <li v-else>Locandina: <img :src="'https://image.tmdb.org/t/p/w92'+ show.poster_path" alt=""></li>
+            </ul>
+        </div>
+    </section>
     <!-- fine lista serie ------------------------------------------------------------------------------------->
 </template>
 
