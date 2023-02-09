@@ -1,0 +1,65 @@
+section {
+    padding: 2rem 0 2rem 1rem;
+}
+
+h2 {
+    margin: 2rem 0;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    ul {
+        list-style: none;
+
+        li {
+            line-height: 1.5rem;
+        }
+    }
+
+    .card-yes {
+        margin-right: 2rem;
+        position: relative;
+
+        .card-info {
+        padding: 4rem 0.5rem;
+        background-color: black;
+        color: white;
+        border: 5px solid white;
+        overflow-y: auto;
+
+            .star-icon {
+                color: yellow;
+            }
+        }
+
+        .card-poster {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 20;
+            background-color: black;
+            border: 5px solid white;
+
+            img {
+                height: 100%;
+                width: 100%;
+                color: white;
+            }
+        }
+
+        &:hover .card-poster{
+            display: none;
+        }
+    }
+
+    .card-commons {
+        height: $cardHeigth;
+        width: $cardWidth;
+    }
+}

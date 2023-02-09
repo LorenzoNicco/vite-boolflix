@@ -12,41 +12,50 @@ export default {
 </script>
 
 <template>
-        <section v-if="store.loaded == true">
-            <div v-if="store.tvSeries == 0">
-                <div class="card-no">
-                    <ul>
-                        <li>Titolo: -</li>
-                        <li>Titolo originale: -</li>
-                        <li>Lingua:  -</li>
-                        <li>Voto: -</li>
-                        <li>locandina: -</li>
-                    </ul>
-                </div>
+       <section v-if="store.loaded == true">
+            <h2>TV Shows</h2>
+
+            <!-- carta placeholder -------------------------------------------------------------------->
+            <div v-if="store.tvSeries == 0"  class="card-no card-commons">
+                <ul>
+                    <li>Titolo: -</li>
+                    <li>Titolo originale: -</li>
+                    <li>Lingua:  -</li>
+                    <li>Voto: -</li>
+                    <li>locandina: -</li>
+                </ul>
             </div>
-            <div v-else>
-                <div class="card-yes" v-for="show in store.tvSeries">
-                    <ul>
-                        <li>Titolo: {{ show.name }}</li>
-                        <li>Titolo originale: {{ show.original_name }}</li>
-                        <li>Lingua:  <span :class="'fi fi-'+ store.languageControl(show)"></span></li>
+            <!-- carta principale -------------------------------------------------------------------->
+            <div v-else class="card-container">
+                <div class="card-yes"  v-for="show in store.tvSeries">
+                    <div class="card-commons card-info">
+                        <ul>
+                            <li><strong>Titolo:</strong> {{ show.name }}</li>
+                            <li><strong>Titolo originale:</strong> {{ show.original_name }}</li>
+                            <li><strong>Lingua:</strong>  <span :class="'fi fi-'+ store.languageControl(show)"></span></li>
 
-                        <!-- sezione voto -->
-                        <li v-if="show.vote_average == 0">Voto: N/A</li>
-                        <li v-else>Voto: 
-                            <font-awesome-icon v-for="number in store.voteConverter(show)" icon="fa-solid fa-star" />
-                            <font-awesome-icon v-for="number in (5 - store.voteConverter(show))" icon="fa-regular fa-star" />
-                        </li>
+                            <!-- sezione voto -->
+                            <li v-if="show.vote_average == 0">Voto: N/A</li>
+                            <li v-else><strong>Voto:</strong> 
+                                <font-awesome-icon class="star-icon" v-for="number in store.voteConverter(show)" icon="fa-solid fa-star" />
+                                <font-awesome-icon class="star-icon" v-for="number in (5 - store.voteConverter(show))" icon="fa-regular fa-star" />
+                            </li>
 
+                            <!-- sezione overview -->
+                            <li v-if="show.overview == ''"><strong>Overview:</strong> N/A</li>
+                            <li v-else><strong>Overview:</strong> {{ show.overview }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-commons card-poster">                        
                         <!-- sezione locandina -->
-                        <li v-if="show.poster_path == null">Locandina: Non presente</li>
-                        <li v-else>Locandina: <img :src="'https://image.tmdb.org/t/p/w92'+ show.poster_path" alt=""></li>
-                    </ul>
+                        <img :src="'https://image.tmdb.org/t/p/w342'+ show.poster_path" :alt="show.name">
+                    </div>
                 </div>
             </div>
         </section>
 </template>
 
 <style lang="scss" scoped>
-
+ @import "../style/partials/cardsStyle.scss";
 </style>

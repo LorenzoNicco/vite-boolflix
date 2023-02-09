@@ -20,17 +20,9 @@ export default {
 
 <template>
     <main>
-        <!-- inizio lista film ------------------------------------------------------------------------------------->
-        <h2>Movies</h2>
+        <MovieCards class="common-rules"/>
 
-        <MovieCards />
-        <!-- fine lista film ------------------------------------------------------------------------------------->
-
-        <!-- inizio lista serie ------------------------------------------------------------------------------------->
-        <h2>TV Shows</h2>
-
-        <TvCards />
-        <!-- fine lista serie ------------------------------------------------------------------------------------->
+        <TvCards class="common-rules"/>
     </main>
 </template>
 
@@ -40,5 +32,9 @@ export default {
         width: 100%;
         overflow-x: auto;
         background-color: gray;
+
+        .common-rules {
+            margin-bottom: 5rem;   
+        }
     }
 </style>
