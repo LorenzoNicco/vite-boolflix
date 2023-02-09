@@ -13,7 +13,7 @@ export default {
             let language;
 
             if (media.original_language == 'en') {
-            language = "gb";
+                language = "gb";
             }
             else if (media.original_language == "ja") {
                 language = "jp";
@@ -103,6 +103,5 @@ export default {
     <!-- fine lista serie ------------------------------------------------------------------------------------->
 </template>
 
-<style scoped>
-
+<style lang="scss" scoped>
 </style>

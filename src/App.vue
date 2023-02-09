@@ -53,6 +53,6 @@ export default {
   <MainApp />
 </template>
 
-<style>
-
+<style lang="scss">
+  @import "./style/main.scss";
 </style>
