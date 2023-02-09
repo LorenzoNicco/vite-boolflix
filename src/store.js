@@ -5,6 +5,4 @@ export const store = reactive ({
     movies: [],
     tvSeries: [],
     loaded: false,
-    tvLanguage: "",
-    movieLanguage: ""
 });

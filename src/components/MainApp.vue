@@ -23,6 +23,11 @@ export default {
             }
 
             return language
+        },
+        voteConverter (media) {
+            let voteToFive = Math.ceil(media.vote_average / 2);
+
+            return voteToFive;
         }
     }
 }
@@ -31,6 +36,9 @@ export default {
 <template>
     <!-- inizio lista film ------------------------------------------------------------------------------------->
     <h2>Movies</h2>
+    <font-awesome-icon icon="fa-solid fa-star" />
+    <font-awesome-icon icon="fa-solid fa-star" />
+    <font-awesome-icon icon="fa-regular fa-star" />
     <section v-if="store.loaded == true">
         <div v-if="store.movies == 0">
             <ul>
@@ -46,7 +54,7 @@ export default {
                 <li>Titolo: {{ movie.title }}</li>
                 <li>Titolo originale: {{ movie.original_title }}</li>
                 <li>Lingua:  <span :class="'fi fi-'+ languageControl(movie)"></span></li>
-                <li>Voto: {{ movie.vote_average }}</li>
+                <li>Voto: {{ voteConverter(movie) }}</li>
 
                 <!-- sezione locandina -->
                 <li v-if="movie.poster_path == null">Locandina: Non presente</li>
@@ -73,7 +81,7 @@ export default {
                 <li>Titolo: {{ show.name }}</li>
                 <li>Titolo originale: {{ show.original_name }}</li>
                 <li>Lingua:  <span :class="'fi fi-'+ languageControl(show)"></span></li>
-                <li>Voto: {{ show.vote_average }}</li>
+                <li>Voto: {{ voteConverter(show) }}</li>
 
                 <!-- sezione locandina -->
                 <li v-if="show.poster_path == null">Locandina: Non presente</li>
