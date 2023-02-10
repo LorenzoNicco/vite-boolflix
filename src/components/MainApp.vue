@@ -1,8 +1,7 @@
 <script>
 import { store } from "../store.js";
 
-import MovieCards from "./MovieCards.vue";
-import TvCards from "./TvCards.vue";
+import AppCard from "./AppCard.vue";
 
 export default {
     name: "MainApp",
@@ -12,17 +11,20 @@ export default {
         }
     },
     components: {
-        MovieCards,
-        TvCards
+        AppCard,
     }
 }
 </script>
 
 <template>
     <main>
-        <MovieCards class="common-rules"/>
+        <AppCard class="common-rules"
+         :element="store.movies"
+        />
 
-        <TvCards class="common-rules"/>
+        <AppCard class="common-rules"
+         :element="store.tvSeries"
+        />
     </main>
 </template>
 
