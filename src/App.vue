@@ -36,7 +36,7 @@ export default {
           console.log("response movies",response);
         }
         // selezione serie tv
-        else {
+        else if (media == "tv"){
           this.store.tvSeries = response.data.results
 
           console.log("tvshow array", this.store.tvSeries)

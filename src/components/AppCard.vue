@@ -1,5 +1,6 @@
 <script>
 import { store } from "../store.js";
+import axios from "axios";
 
 export default {
     name: "AppCard",
@@ -9,7 +10,8 @@ export default {
         }
     },
     props: {
-        element: Object
+        element: Object,
+        type: String
     },
     methods: {
         languageControl (media) {
@@ -34,6 +36,21 @@ export default {
             let voteToFive = Math.ceil(media.vote_average / 2);
 
             return voteToFive;
+        },
+        researchActors(id) {
+            axios
+            .get("https://api.themoviedb.org/3/search/" + this.type + "/" + id + "/credits", {
+                params: {
+                api_key: "44bbbe46a74e4cb360533140b122b63a"
+                }
+            })
+            .then ((response) => {
+                this.store.credits = response.data.results
+
+                console.log("credits array", this.store.credits)
+                console.log("response credits",response);
+            });
+            console.log("chiamata", "https://api.themoviedb.org/3/search/" + this.type + "/" + id + "/credits");
         }
     }
 }
@@ -73,6 +90,12 @@ export default {
                             <!-- sezione overview -->
                             <li v-if="item.overview == ''"><strong>Overview:</strong> N/A</li>
                             <li v-else><strong>Overview:</strong> {{ item.overview }}</li>
+
+                            <button @click="researchActors(item.id)">Più info</button>
+
+                            <!-- <li><strong>Generi:  </strong>
+                                <span v-for="genere in item.genre_ids">{{ genere.name }}</span>
+                            </li> -->
                         </ul>
                     </div>
 

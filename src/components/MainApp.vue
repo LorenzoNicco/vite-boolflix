@@ -7,7 +7,9 @@ export default {
     name: "MainApp",
     data() {
         return {
-            store
+            store,
+            typeFilm: "movie",
+            typeTv: "tv"
         }
     },
     components: {
@@ -20,10 +22,12 @@ export default {
     <main>
         <AppCard class="common-rules"
          :element="store.movies"
+         :type="typeFilm"
         />
 
         <AppCard class="common-rules"
          :element="store.tvSeries"
+         :type="typeTv"
         />
     </main>
 </template>

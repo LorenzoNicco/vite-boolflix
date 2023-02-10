@@ -38,15 +38,16 @@ export default {
             color: red;
             position: relative;
             overflow: hidden;
+            font-weight: 700;
 
             &::after {
                 content: "";
                 position: absolute;
-                height: 2.1rem;
-                left: -10%;
-                right: -10%;
+                height: 2.3rem;
+                left: -25%;
+                right: -25%;
                 border-radius: 50%;
-                bottom: -24px;
+                bottom: -27px;
                 background: black;
             }
         }
