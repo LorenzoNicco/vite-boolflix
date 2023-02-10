@@ -36,6 +36,19 @@ export default {
 
         h1 {
             color: red;
+            position: relative;
+            overflow: hidden;
+
+            &::after {
+                content: "";
+                position: absolute;
+                height: 2.1rem;
+                left: -10%;
+                right: -10%;
+                border-radius: 50%;
+                bottom: -24px;
+                background: black;
+            }
         }
 
         input {

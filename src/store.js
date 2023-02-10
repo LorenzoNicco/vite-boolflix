@@ -14,6 +14,9 @@ export const store = reactive ({
         else if (media.original_language == "ja") {
             language = "jp";
         }
+        else if (media.original_language == "es") {
+            language = "sp";
+        }
         else {
             language = media.original_language;
         }

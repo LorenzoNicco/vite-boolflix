@@ -17,6 +17,8 @@ export default {
   },
   methods: {
     research (media) {
+      this.store.loaded = false;
+
       axios
       .get("https://api.themoviedb.org/3/search/" + media, {
         params: {

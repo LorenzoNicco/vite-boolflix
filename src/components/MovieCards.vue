@@ -26,15 +26,19 @@ export default {
                 <div class="card-yes"  v-for="movie in store.movies">
                     <div class="card-commons card-info">
                         <ul>
-                            <li><strong>Titolo:</strong> {{ movie.title }}</li>
-                            <li v-show="movie.original_title != movie.title"><strong>Titolo originale:</strong> {{ movie.original_title }}</li>
+                            <li>
+                                <h3>Titolo: {{ movie.title }}</h3>
+                            </li>
+                            <li v-show="movie.original_title != movie.title">
+                                <h4>Titolo originale: {{ movie.original_title }}</h4>
+                            </li>
                             <li><strong>Lingua:</strong>  <span :class="'fi fi-'+ store.languageControl(movie)"></span></li>
 
                             <!-- sezione voto -->
                             <li v-if="movie.vote_average == 0">Voto: N/A</li>
                             <li v-else><strong>Voto:</strong> 
-                                <font-awesome-icon class="star-icon" v-for="number in store.voteConverter(movie)" icon="fa-solid fa-star" />
-                                <font-awesome-icon class="star-icon" v-for="number in (5 - store.voteConverter(movie))" icon="fa-regular fa-star" />
+                                <font-awesome-icon class="star-icon" v-for="n in store.voteConverter(movie)" icon="fa-solid fa-star" />
+                                <font-awesome-icon class="star-icon" v-for="n in (5 - store.voteConverter(movie))" icon="fa-regular fa-star" />
                             </li>
 
                             <!-- sezione overview -->
