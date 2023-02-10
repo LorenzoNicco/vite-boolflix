@@ -4,6 +4,8 @@ export const store = reactive ({
     researchedTitle: "",
     movies: [],
     tvSeries: [],
-    credits: [],
+    cast: [],
+    genre: [],
     loaded: false,
+    infoLoader: false
 });

@@ -46,6 +46,19 @@ export default {
         // store loader
         this.store.loaded = true;
       });
+      // chiamata per genere
+      axios
+      .get("https://api.themoviedb.org/3/genre/" + media + "/list", {
+          params: {
+          api_key: "44bbbe46a74e4cb360533140b122b63a"
+          }
+      })
+      .then ((response) => {
+          this.store.genre = response.data.genres;
+
+          console.log("genre array", this.store.genre)
+          console.log("response genre", response);
+      });
     }
   }
 }

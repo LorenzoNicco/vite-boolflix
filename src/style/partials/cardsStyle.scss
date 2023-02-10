@@ -61,7 +61,25 @@ h2 {
         }
 
         &:hover .card-poster{
-            display: none;
+            filter: opacity(0.1);
+            pointer-events: none;
+        }
+
+        .info-button {
+            margin: 1rem auto;
+            padding: 0.5rem 1rem;
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+
+        }
+
+        .info-section {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
     }
 

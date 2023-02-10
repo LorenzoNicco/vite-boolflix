@@ -6,7 +6,8 @@ export default {
     name: "AppCard",
     data() {
         return {
-            store
+            store,
+            mediaGenres: []
         }
     },
     props: {
@@ -37,20 +38,37 @@ export default {
 
             return voteToFive;
         },
-        researchActors(id) {
+        researchAdditionalInfo(id, item) {
+            this.store.infoLoader = false;
+
             axios
-            .get("https://api.themoviedb.org/3/search/" + this.type + "/" + id + "/credits", {
+            .get("https://api.themoviedb.org/3/" + this.type + "/" + id + "/credits", {
                 params: {
                 api_key: "44bbbe46a74e4cb360533140b122b63a"
                 }
             })
             .then ((response) => {
-                this.store.credits = response.data.results
+                this.store.cast = response.data.cast.slice(0,5);
 
-                console.log("credits array", this.store.credits)
-                console.log("response credits",response);
+                console.log("cast array", this.store.cast)
+                console.log("response cast",response);
+
+                this.researchGenre(item)
+
+                this.store.infoLoader = true;
             });
-            console.log("chiamata", "https://api.themoviedb.org/3/search/" + this.type + "/" + id + "/credits");
+        },
+        researchGenre(item) {
+            this.mediaGenres = [];
+
+            for (let j = 0; j < item.length; j++) {
+                for (let i = 0; i < this.store.genre.length; i++) {
+                    if (item[j] == this.store.genre[i].id) {
+                        let singleGenre = this.store.genre[i].name;
+                        this.mediaGenres.push(singleGenre);
+                    }
+                }
+            }
         }
     }
 }
@@ -70,7 +88,7 @@ export default {
             <!-- carta principale -------------------------------------------------------------------->
             <div v-else class="card-container">
                 <div class="card-yes"  v-for="item in element">
-                    <div class="card-commons card-info">
+                    <div class="card-commons card-info" @mouseleave="store.infoLoader = false">
                         <ul>
                             <li>
                                 <h3>Titolo: {{ item.title || item.name }}</h3>
@@ -90,12 +108,23 @@ export default {
                             <!-- sezione overview -->
                             <li v-if="item.overview == ''"><strong>Overview:</strong> N/A</li>
                             <li v-else><strong>Overview:</strong> {{ item.overview }}</li>
+                            
+                            <!-- sezione info -->
+                            <button class="info-button" @click="researchAdditionalInfo(item.id, item.genre_ids)">Più info</button>
 
-                            <button @click="researchActors(item.id)">Più info</button>
+                            <div v-show="store.infoLoader == true">
+                                <span><strong>Cast: </strong></span>
 
-                            <!-- <li><strong>Generi:  </strong>
-                                <span v-for="genere in item.genre_ids">{{ genere.name }}</span>
-                            </li> -->
+                                <ul class="info-section">
+                                    <li v-for="actor in store.cast">{{ actor.name }}</li>
+                                </ul>
+
+                                <span><strong>Generi: </strong></span>
+
+                                <ul class="info-section">
+                                    <li v-for="genre in this.mediaGenres">{{ genre }}</li>
+                                </ul>
+                            </div>
                         </ul>
                     </div>
 
