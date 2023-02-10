@@ -10,6 +10,31 @@ export default {
     },
     props: {
         element: Object
+    },
+    methods: {
+        languageControl (media) {
+            let language;
+
+            if (media.original_language == 'en') {
+                language = "gb";
+            }
+            else if (media.original_language == "ja") {
+                language = "jp";
+            }
+            else if (media.original_language == "es") {
+                language = "sp";
+            }
+            else {
+                language = media.original_language;
+            }
+
+            return language
+        },
+        voteConverter (media) {
+            let voteToFive = Math.ceil(media.vote_average / 2);
+
+            return voteToFive;
+        }
     }
 }
 </script>
@@ -36,13 +61,13 @@ export default {
                             <li v-show="(item.original_title != item.title) || (item.original_name != item.name)">
                                 <h4>Titolo originale: {{ item.original_title || item.original_name }}</h4>
                             </li>
-                            <li><strong>Lingua:</strong>  <span :class="'fi fi-'+ store.languageControl(item)"></span></li>
+                            <li><strong>Lingua:</strong>  <span :class="'fi fi-'+ languageControl(item)"></span></li>
 
                             <!-- sezione voto -->
                             <li v-if="item.vote_average == 0">Voto: N/A</li>
                             <li v-else><strong>Voto:</strong> 
-                                <font-awesome-icon class="star-icon" v-for="n in store.voteConverter(item)" icon="fa-solid fa-star" />
-                                <font-awesome-icon class="star-icon" v-for="n in (5 - store.voteConverter(item))" icon="fa-regular fa-star" />
+                                <font-awesome-icon class="star-icon" v-for="n in voteConverter(item)" icon="fa-solid fa-star" />
+                                <font-awesome-icon class="star-icon" v-for="n in (5 - voteConverter(item))" icon="fa-regular fa-star" />
                             </li>
 
                             <!-- sezione overview -->
