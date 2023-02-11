@@ -2,11 +2,20 @@
     padding: 4rem 0.5rem;
     background-color: black;
     color: white;
-    border: 5px solid white;
 }
 
 @mixin flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@mixin header-buttons {
+    color: white;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: large;
 }

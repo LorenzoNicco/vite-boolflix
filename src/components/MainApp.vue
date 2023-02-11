@@ -37,10 +37,29 @@ export default {
         height: 90vh;
         width: 100%;
         overflow-x: auto;
-        background-color: gray;
+        background: linear-gradient(0deg, rgba(48,48,48,1) 3%, rgba(25,25,25,1) 43%);
 
         .common-rules {
             margin-bottom: 5rem;   
         }
+    }
+
+    // scrollbar
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #333333;
+        border-radius: 2px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #696969;
+        cursor: pointer;
     }
 </style>
