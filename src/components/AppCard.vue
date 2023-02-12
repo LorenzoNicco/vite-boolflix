@@ -87,7 +87,10 @@ export default {
             </div>
             <!-- carta principale -------------------------------------------------------------------->
             <div v-else class="card-container">
-                <div class="card-yes"  v-for="item in element">
+                <div class="card-yes"
+                  v-for="item in element"
+                  v-show="store.genreSelected == '' || item.genre_ids.includes(store.genreSelected)"
+                >
                     <div class="card-commons card-info" @mouseleave="store.infoLoader = false">
                         <ul>
                             <li>

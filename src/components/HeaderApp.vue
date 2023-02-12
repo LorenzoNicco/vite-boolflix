@@ -5,7 +5,8 @@ export default {
     name: "HeaderApp",
     data() {
         return {
-            store
+            store,
+            selection: ""
         }
     }
 }
@@ -13,7 +14,19 @@ export default {
 
 <template>
     <header>
-        <h1>BOOLFLIX</h1>
+        <div class="header-start">
+            <h1>BOOLFLIX</h1>
+
+            <select name="genres" id="genre-selector"
+             v-model="selection"
+             @change="store.genreSelected = this.selection"
+            >
+                <option v-for="genre in store.genre" :value="genre.id">{{ genre.name }}</option>
+            </select>
+        </div>
+        
+
+
 
         <form action="" @submit.prevent="onSubmit">
             <input type="text" placeholder="&#128269;"
@@ -45,21 +58,38 @@ export default {
         justify-content: space-between;
         align-items: center;
 
-        h1 {
-            color: red;
-            position: relative;
-            overflow: hidden;
-            font-weight: 700;
+        .header-start {
+            display: flex;
 
-            &::after {
-                content: "";
-                position: absolute;
-                height: 2.3rem;
-                left: -25%;
-                right: -25%;
-                border-radius: 50%;
-                bottom: -27px;
-                background: #191919;
+            select {
+                background-color: transparent;
+                margin-left: 1rem;
+                border: none;
+                color: white;
+                outline: none;
+                width: fit-content;
+
+                option {
+                    background-color: #353535;
+                }
+            }
+
+            h1 {
+                color: red;
+                position: relative;
+                overflow: hidden;
+                font-weight: 700;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    height: 2.3rem;
+                    left: -25%;
+                    right: -25%;
+                    border-radius: 50%;
+                    bottom: -27px;
+                    background: #191919;
+                }
             }
         }
 

@@ -7,5 +7,6 @@ export const store = reactive ({
     cast: [],
     genre: [],
     loaded: false,
-    infoLoader: false
+    infoLoader: false,
+    genreSelected: ""
 });
