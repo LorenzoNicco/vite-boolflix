@@ -17,6 +17,18 @@ export default {
         <div class="header-start">
             <h1>BOOLFLIX</h1>
 
+            <button>Home</button>
+
+            <button>Serie TV</button>
+
+            <button>Film</button>
+
+            <button>Originali</button>
+
+            <button>Aggiunti di recente</button>
+
+            <button>La mia lista</button>
+
             <select name="genres" id="genre-selector"
              v-model="selection"
              @change="store.genreSelected = this.selection"
@@ -61,11 +73,12 @@ export default {
         .header-start {
             display: flex;
 
+            button {
+                @include header-start-btn;
+            }
+
             select {
-                background-color: transparent;
-                margin-left: 1rem;
-                border: none;
-                color: white;
+                @include header-start-btn;
                 outline: none;
                 width: fit-content;
 
