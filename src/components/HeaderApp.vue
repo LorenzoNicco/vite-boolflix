@@ -40,10 +40,9 @@ export default {
 
 
 
-        <form action="" @submit.prevent="onSubmit">
+        <form action="" @submit.prevent="$emit('search')">
             <input type="text" placeholder="&#128269;"
              v-model="store.researchedTitle"
-             @keyup.enter="$emit('search')"
             >
 
             <button class="user-btn">USER</button>

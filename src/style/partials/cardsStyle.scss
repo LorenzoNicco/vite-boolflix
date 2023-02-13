@@ -35,6 +35,14 @@ h2 {
         .card-info {
         @include info-structure;
         overflow-y: auto;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 20;
+        filter: opacity(0);
+        transition: all 0.5s;
 
             .star-icon {
                 color: yellow;
@@ -42,24 +50,18 @@ h2 {
         }
 
         .card-poster {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 20;
-            background-color: rgb(24, 24, 24);
+            background-color: black;
 
             img {
                 height: 100%;
                 width: 100%;
+                object-fit: cover;
                 color: white;
             }
         }
 
-        &:hover .card-poster{
-            filter: opacity(0.1);
-            pointer-events: none;
+        &:hover .card-info{
+            filter: opacity(0.8);
         }
 
         .info-button {
@@ -69,6 +71,7 @@ h2 {
             color: white;
             border: none;
             border-radius: 5px;
+            cursor: pointer;
 
         }
 

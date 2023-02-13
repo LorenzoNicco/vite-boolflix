@@ -91,6 +91,12 @@ export default {
                   v-for="item in element"
                   v-show="store.genreSelected == '' || item.genre_ids.includes(store.genreSelected)"
                 >
+                    <!-- sezione locandina -->
+                    <div class="card-commons card-poster">                        
+                        <img :src="'https://image.tmdb.org/t/p/w342'+ item.poster_path" :alt="item.title || item.name">
+                    </div>
+
+                    <!-- sezione informazioni -->
                     <div class="card-commons card-info" @mouseleave="store.infoLoader = false">
                         <ul>
                             <li>
@@ -129,11 +135,6 @@ export default {
                                 </ul>
                             </div>
                         </ul>
-                    </div>
-
-                    <div class="card-commons card-poster">                        
-                        <!-- sezione locandina -->
-                        <img :src="'https://image.tmdb.org/t/p/w342'+ item.poster_path" :alt="item.title || item.name">
                     </div>
                 </div>
             </div>
