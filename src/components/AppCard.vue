@@ -114,6 +114,9 @@ export default {
                                 <font-awesome-icon class="star-icon" v-for="n in (5 - voteConverter(item))" icon="fa-regular fa-star" />
                             </li>
 
+                            <!-- sezione data di uscita -->
+                            <li><strong>Data di uscita:</strong> {{ item.release_date || item.first_air_date }}</li>
+
                             <!-- sezione overview -->
                             <li v-if="item.overview == ''"><strong>Overview:</strong> N/A</li>
                             <li v-else><strong>Overview:</strong> {{ item.overview }}</li>

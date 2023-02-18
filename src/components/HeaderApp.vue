@@ -114,10 +114,12 @@ export default {
             outline: none;
             transition: all 0.2s ease-out;
             background-color: transparent;
+            color: white;
 
             &:focus {
                 width: 10rem;
                 background-color: rgb(167, 167, 167);
+                color: black
             }
         }
 
