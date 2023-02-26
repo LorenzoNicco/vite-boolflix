@@ -9,7 +9,6 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 Boolflix
 
--Chiave API: 44bbbe46a74e4cb360533140b122b63a
 
 Milestone 0: progetto struttura app
     - Componenti e file necessari:
